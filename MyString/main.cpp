@@ -10,14 +10,19 @@ int main()
     MyString str1;
     MyString str2(somestr);
     MyString str3(str2);
+    MyString str4("Hello ");
+    MyString str5("world");
 
     std::cout << str1.GetLength() << " : " << str1.GetBody() << std::endl;
     std::cout << str2.GetLength() << " : " << str2.GetBody() << std::endl;
     std::cout << str3.GetLength() << " : " << str3.GetBody() << std::endl;
 
-    str3 = str2;
+    MyString str6;
+    str6 = str4 + str5;
 
-    std::cout << str3.GetLength() << " : " << str3.GetBody() << std::endl;
+    std::cout << str6.GetLength() << " : " << str6.GetBody() << std::endl;
+
+
 
     return 0;
 }

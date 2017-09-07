@@ -15,7 +15,10 @@ public:
 
     ~MyString();
 
-    MyString& operator=(const MyString &rhs);
+    MyString& operator= (const MyString &rhs);
+    MyString& operator+=(const MyString &rhs);
+
+    explicit operator const char*() const {return body;};
 
     int GetLength() const;
     char* GetBody() const;
@@ -25,5 +28,10 @@ private:
     char* body;
 };
 
+inline MyString operator+ (MyString lhs, const MyString &rhs)
+{
+    lhs += rhs;
+    return lhs;
+}
 
 #endif //MYSTRING_MYSTRING_H
