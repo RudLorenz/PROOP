@@ -87,3 +87,15 @@ MyString &MyString::operator+=(const MyString &rhs)
 
     return *this;
 }
+
+char &MyString::operator[](int index)
+{
+    //out-of-bound behavior - "standard"
+    //¯\_(ツ)_/¯
+    return body[index];
+}
+
+const char &MyString::operator[](int index) const
+{
+    return body[index];
+}

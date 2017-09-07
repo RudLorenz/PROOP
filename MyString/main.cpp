@@ -22,7 +22,18 @@ int main()
 
     std::cout << str6.GetLength() << " : " << str6.GetBody() << std::endl;
 
+    for (int i = str6.GetLength()-1; i >= 0; --i) {
+        std::cout << str6[i];
+    }
+    std::cout << std::endl;
 
+    str6[5] = '5';
+    str6[6] = '6';
+
+    for (int i = str6.GetLength()-1; i >= 0; --i) {
+        std::cout << str6[i];
+    }
+    std::cout << std::endl;
 
     return 0;
 }

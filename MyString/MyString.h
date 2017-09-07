@@ -20,6 +20,9 @@ public:
 
     explicit operator const char*() const {return body;};
 
+    char& operator[](int index);
+    const char& operator[](int index) const;
+
     int GetLength() const;
     char* GetBody() const;
 
