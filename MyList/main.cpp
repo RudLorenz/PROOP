@@ -9,14 +9,36 @@ int main()
     listy.PushFront(2);
     listy.PushFront(3);
     listy.PushFront(4);
+    listy.PushFront(5);
 
     listy.PrintList();
 
-    listy.EraseFront();
+    listy.PopFront();
     listy.PrintList();
 
-    listy.EraseFront();
+    listy.PopFront();
     listy.PrintList();
+
+    listy.Push(6);
+    listy.Push(7);
+
+    listy.PrintList();
+
+    listy.PopBack();
+
+    listy.PrintList();
+
+    MyList<int> wocka;
+
+    wocka.Push(1);
+    wocka.Push(2);
+
+    wocka.PrintList();
+    wocka.PopBack();
+    wocka.PrintList();
+    wocka.PopBack();
+    wocka.PrintList();
+
 
     return 0;
 }
