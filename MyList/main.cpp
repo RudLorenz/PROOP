@@ -39,6 +39,14 @@ int main()
     wocka.PopBack();
     wocka.PrintList();
 
+    std::cout << "---------------" << std::endl;
+    listy.PrintList();
+    std::cout << "size = " << listy.GetSize() << std::endl;
+
+    auto it = listy.begin();
+
+    std::cout << *++it << " " << *it++ << " " << *it << std::endl;
+
 
     return 0;
 }

@@ -25,6 +25,18 @@ public:
     void PopFront();
     void PopBack();
 
+    class MyListIterator;
+
+    typedef MyListIterator iterator;
+    typedef MyListIterator const_iterator;
+
+    iterator begin()             { return iterator(head); };
+    const_iterator begin() const { return iterator(head); };
+    iterator end()               { return iterator(nullptr); };
+    const_iterator end() const   { return iterator(nullptr); };
+
+    int GetSize() const;
+
 private:
 	struct Node;
     Node * head = nullptr;
@@ -37,6 +49,27 @@ struct MyList<T>::Node
     Node* next;
 
     Node(const T& value) :value(value), next() {};
+};
+
+template <typename T>
+class MyList<T>::MyListIterator
+{
+public:
+    MyListIterator() : ptr(nullptr) {};
+    MyListIterator(Node* ptr) : ptr(ptr) {};
+    MyListIterator(const MyListIterator& other) : ptr(other.ptr) {};
+
+    T& operator*() { return ptr->value; }
+    T* operator->() { return ptr->value; }
+    MyListIterator& operator++()  { ptr = ptr->next; return *this; }
+    MyListIterator operator++(int) { MyListIterator result(*this); ptr = ptr->next; return result; }
+    bool operator==(const MyListIterator& rhs) const { return ptr == rhs.ptr; }
+    bool operator!=(const MyListIterator& rhs) const { return ptr != rhs.ptr; }
+
+
+
+private:
+    Node* ptr;
 };
 
 template <typename T>
@@ -129,6 +162,18 @@ void MyList<T>::PopBack()
             head = nullptr;
         }
     }
+}
+
+template <typename T>
+int MyList<T>::GetSize() const
+{
+    int result = 0;
+
+    for(const_iterator it = begin(); it != end(); ++it) {
+        ++result;
+    }
+
+    return result;
 }
 
 #endif //MYLIST_MYLIST_H
