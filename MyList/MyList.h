@@ -26,14 +26,17 @@ public:
     void PopBack();
 
 private:
-	struct Node
-	{
-		T value;
-		Node* next;
-		
-		Node(const T& value) :value(value), next() {};
-	};
+	struct Node;
     Node * head = nullptr;
+};
+
+template <typename T>
+struct MyList<T>::Node
+{
+    T value;
+    Node* next;
+
+    Node(const T& value) :value(value), next() {};
 };
 
 template <typename T>
