@@ -6,56 +6,56 @@
 #include <cstring>
 #include "MyString.h"
 
-MyString::MyString(): length(0), body(nullptr)
+MyString::MyString(): length_(0), body_(nullptr)
 {
     std::cout << "MyString() constructor called" << std::endl;
 }
 
-MyString::MyString(char *string): length(strlen(string)), body(new char[length+1])
+MyString::MyString(char *string): length_(strlen(string)), body_(new char[length_+1])
 {
     std::cout << "MyString(string) constructor called" << std::endl;
 
-    strcpy(body, string);
+    strcpy(body_, string);
 }
 
-MyString::MyString(const MyString &obj): length(obj.length), body(new char[length+1])
+MyString::MyString(const MyString &obj): length_(obj.length_), body_(new char[length_+1])
 {
     std::cout << "MyString() copy constructor called" << std::endl;
 
-    strcpy(body, obj.body);
+    strcpy(body_, obj.body_);
 }
 
 MyString::~MyString()
 {
     std::cout << "MyString() destructor called" << std::endl;
-    delete [] body;
+    delete [] body_;
 }
 
 int MyString::GetLength() const {
-    return length;
+    return length_;
 }
 
 char *MyString::GetBody() const
 {
-    if (nullptr == body) {
+    if (nullptr == body_) {
         return "null";
     }
-    return body;
+    return body_;
 }
 
 MyString &MyString::operator=(const MyString &rhs)
 {
     if (this != &rhs)
     {
-        delete[] body;
-		body = nullptr;
+        delete[] body_;
+		body_ = nullptr;
 
-        length = rhs.length;
+        length_ = rhs.length_;
 
-		if (nullptr != rhs.body)
+		if (nullptr != rhs.body_)
 		{
-			body = new char[rhs.length + 1];
-			strcpy(body, rhs.body);
+			body_ = new char[rhs.length_ + 1];
+			strcpy(body_, rhs.body_);
 		}
     }
 
@@ -64,23 +64,23 @@ MyString &MyString::operator=(const MyString &rhs)
 
 MyString &MyString::operator+=(const MyString &rhs)
 {
-    if (nullptr != rhs.body)
+    if (nullptr != rhs.body_)
     {
-        char *tmp = new char[length + rhs.length + 1];
+        char *tmp = new char[length_ + rhs.length_ + 1];
 
-        if (body != nullptr) {
-            strcpy(tmp, body);
+        if (body_ != nullptr) {
+            strcpy(tmp, body_);
         }
 
-        strcat(tmp, rhs.body);
+        strcat(tmp, rhs.body_);
 
-        delete[] body;
-        body = nullptr;
+        delete[] body_;
+        body_ = nullptr;
 
-        body = new char[length + rhs.length + 1];
-        strcpy(body, tmp);
+        body_ = new char[length_ + rhs.length_ + 1];
+        strcpy(body_, tmp);
 
-        length += rhs.length;
+        length_ += rhs.length_;
 
         delete[] tmp;
     }
@@ -92,10 +92,10 @@ char &MyString::operator[](int index)
 {
     //out-of-bound behavior - "standard"
     //¯\_(ツ)_/¯
-    return body[index];
+    return body_[index];
 }
 
 const char &MyString::operator[](int index) const
 {
-    return body[index];
+    return body_[index];
 }

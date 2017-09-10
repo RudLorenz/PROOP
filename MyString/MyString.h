@@ -10,28 +10,27 @@ class MyString
 {
 public:
     MyString();
-    explicit MyString(char* string);
+    explicit MyString(char *string);
     MyString(const MyString &obj);
 
     ~MyString();
 
-    MyString& operator= (const MyString &rhs);
-    MyString& operator+=(const MyString &rhs);
+    MyString &operator=(const MyString &rhs);
+    MyString &operator+=(const MyString &rhs);
 
-    explicit operator const char*() const {return body;};
-
-    char& operator[](int index);
-    const char& operator[](int index) const;
+    explicit operator const char *() const { return body_; };
+    char &operator[](int index);
+    const char &operator[](int index) const;
 
     int GetLength() const;
-    char* GetBody() const;
+    char *GetBody() const;
 
 private:
-    int length;
-    char* body;
+    int length_;
+    char *body_;
 };
 
-inline MyString operator+ (MyString lhs, const MyString &rhs)
+inline MyString operator+(MyString lhs, const MyString &rhs)
 {
     lhs += rhs;
     return lhs;
